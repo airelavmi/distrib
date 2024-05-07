@@ -31,7 +31,8 @@ jobs:
         with:
           username: ${{ secrets.DH_AIRELAVMI }}
           password: ${{ secrets.DH_AIRELAVMI_PASS }}
-
+      - name: Tag Docker image
+        run: docker tag my_microservice ${{ secrets.DOCKER_USERNAME }}/my_microservice:latest
       - name: Push Docker image to Docker Hub
         run: docker push my_microservice
 
