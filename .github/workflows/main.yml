@@ -29,3 +29,5 @@ jobs:
         with:
           push: true
           tags: airelavmi/distrib:microservice_lr3
+          build-args: |
+            -f ./my.dockerfile
