@@ -9,12 +9,9 @@ class TestRecommendationsAPI:
     def test_recommendations_for_genre(self, api_url):
         response = requests.get(api_url, params={"genre": "Detective"})
         assert response.status_code == 200
-        # Здесь можно добавить дополнительные проверки для убеждения в правильности ответа
 
     def test_recommendations_for_author(self, api_url):
         response = requests.get(api_url, params={"author": "George Orwell"})
         assert response.status_code == 200
-        # Здесь также можно добавить дополнительные проверки
 
-    # Другие тесты для вашего API
 
