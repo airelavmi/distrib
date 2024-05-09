@@ -28,4 +28,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: airelavmi/disturb:microservice_lr3
+          tags: airelavmi/distrib:microservice_lr3
