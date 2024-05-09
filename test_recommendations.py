@@ -4,7 +4,7 @@ import requests
 class TestRecommendationsAPI:
     @pytest.fixture(scope='module')
     def api_url(self):
-        return "http://my_microservice:5000/recommend"
+        return "http://docker.io/airelavmi/distrib:microservice_lr3/recommend"
 
     def test_recommendations_for_genre(self, api_url):
         response = requests.get(api_url, params={"genre": "Detective"})
