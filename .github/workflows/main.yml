@@ -1,29 +1,24 @@
 name: CI
 
-# Run the job in this workflow when commits are pushed to the main branch
 on:
   push:
     branches:
       - 'main'
 
 jobs:
-  # Build and push a container on an ubuntu runner
   build-push:
     runs-on: ubuntu-latest
     steps:
       -
-        # Check out the code with the latest version of the Dockerfile
         name: Checkout
         uses: actions/checkout@v3
       -
-        # Login to DockerHub with your secrets
         name: Login to DockerHub
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DH_AIRELAVMI }}  # Placeholder for the login username on DockerHub
-          password: ${{ secrets.DH_AIRELAVMI_PASS }}      # Placeholder for the login password on Dockerhub
+          username: ${{ secrets.DH_AIRELAVMI }} 
+          password: ${{ secrets.DH_AIRELAVMI_PASS }} 
       -
-        # Build and push the resulting image to the repo {{Docker-ID/repo-name}} on DockerHub automatically
         name: Build and push
         uses: docker/build-push-action@v3
         with:
