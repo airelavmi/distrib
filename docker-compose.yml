@@ -1,31 +1,31 @@
-version: '3.8'
+version: '3.7'
 
 services:
   microservice:
-    build: .
+    build:
+      context: .
+      dockerfile: my.dockerfile
+    image: airelavmi/distrib:microservice_lr3
     ports:
-      - "5000:5000"  # Пробрасываем порт Flask
+      - "5000:5000"
     networks:
-      - monitoring
-
-  grafana:
-    image: grafana/grafana:latest
-    ports:
-      - "3000:3000"  # Пробрасываем порт Grafana
-    depends_on:
-      - prometheus
-    networks:
-      - monitoring
+      - monitoring  # Подключаем к сети monitoring
 
   prometheus:
-    image: prom/prometheus:latest
+    image: prom/prometheus
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml  # Подключаем файл конфигурации Prometheus
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
-      - "9090:9090"  # Пробрасываем порт Prometheus
+      - "9090:9090"
     networks:
-      - monitoring
+      - monitoring  # Подключаем к сети monitoring
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - monitoring  # Подключаем к сети monitoring
 
 networks:
-  monitoring:
-    driver: bridge
+  monitoring:  # Определяем сеть monitoring
